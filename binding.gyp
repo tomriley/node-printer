@@ -13,14 +13,17 @@
           "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
           "destination": "<(module_path)"
         }
-      ]
+      ],
+
     },
     {
       'target_name': 'node_printer',
       'sources': [
         # is like "ls -1 src/*.cc", but gyp does not support direct patterns on
         # sources
-        '<!@(["python", "tools/getSourceFiles.py", "src", "cc"])'
+        'src/node_printer_posix.cc',
+        'src/node_printer_win.cc',
+        'src/node_printer.cc'
       ],
       'include_dirs' : [
         "<!(node -e \"require('nan')\")"
