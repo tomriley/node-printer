@@ -27,11 +27,11 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
-    "install": "prebuild-install || node-gyp rebuild",
+    "install": "prebuild-install || node-gyp rebuild; rm -rf build",
     "apply-patches": "patch-package",
-    "prebuild-all": "prebuild --all --force --strip --verbose --openssl_fips=X",
-    "prebuild": "prebuild",
-    "rebuild": "node-gyp rebuild",
+    "prebuild-all": "prebuild --all --force --strip --verbose --openssl_fips=X; rm -rf build",
+    "prebuild": "prebuild; rm -rf build",
+    "rebuild": "node-gyp rebuild; rm -rf build",
     "test": "nodeunit test"
   },
   "binary": {
